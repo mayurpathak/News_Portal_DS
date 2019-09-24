@@ -20,7 +20,7 @@
 <div id="newDatas">
 
 </div>
-@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 <script>
     $(document).ready(function () {
@@ -35,6 +35,11 @@
             if ($(this).text() == 'Download Dainik Bhaskar App to read Latest Hindi News Today')
                 $(this).text('');
         });
+        $('#newDatas p > strong > span').each(function () {
+            if ($(this).text() == 'ज्योतिष पंडित श्यामनारायण व्यास')
+                $(this).text('ज्योतिष पंडित हिमेश शास्त्री');
+        });
+        
         $("#newDatas a > img").attr('class', 'img-responsive').attr('style','margin-left:0px');
         $("section").remove();
     });

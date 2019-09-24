@@ -3,6 +3,7 @@ using News_Portal.Models.EntityData;
 using News_Portal.Models.RSSFeed;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,6 +16,27 @@ namespace News_Portal.Controllers
     {
         public ActionResult Home()
         {
+            using (SystemDB db = new SystemDB())
+            {
+                string ipAddress = GetIp();
+                if (ipAddress != null)
+                {
+                    var userCount = db.UserCount.Where(x => x.IPAddess == ipAddress).FirstOrDefault();
+                    UserCount userCount1 = new UserCount();
+                    if (userCount == null)
+                    {
+                        userCount1.IPAddess = ipAddress;
+                        userCount1.Count = 1;
+                        db.Entry(userCount1).State = EntityState.Added;
+                        db.SaveChanges();
+                    };
+                    int totalUserCount = db.UserCount.Count();
+                    if (totalUserCount > 0)
+                    {
+                        Session["TotalUserCount"] = totalUserCount;
+                    }
+                }
+            }
             return View();
         }
         [HttpPost]
@@ -94,7 +116,15 @@ namespace News_Portal.Controllers
             string base64String = "data:image/" + fileExtention + ";base64," + Convert.ToBase64String(imageBytes);
             return base64String;
         }
-
+        public string GetIp()
+        {
+            string ip = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (string.IsNullOrEmpty(ip))
+            {
+                ip = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+            }
+            return ip;
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

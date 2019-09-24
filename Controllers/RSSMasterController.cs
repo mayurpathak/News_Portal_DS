@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 
 namespace News_Portal.Controllers
@@ -43,7 +44,7 @@ namespace News_Portal.Controllers
                     RSSFeed rSSFeed = new RSSFeed();
                     DateTime testingDate = db.RSSFeed.Where(x => x.RSSFeedID == RSSFeedID).ToList().OrderByDescending(x => x.PublishDate).Select(x => x.PublishDate).FirstOrDefault();
                     var rssFeedList = db.RSSFeed.Where(x => x.RSSFeedID == RSSFeedID && x.RSSID == RSSID && DbFunctions.TruncateTime(x.PublishDate) == testingDate.Date).FirstOrDefault();
-                    rssFeedList.Description.Replace("\"", "");
+                    rssFeedList.Description.Replace("\"", "");                  
                     return View("~/Views/RSSMaster/Description.cshtml", rssFeedList);
                 }
             }
