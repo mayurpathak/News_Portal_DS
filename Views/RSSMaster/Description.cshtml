@@ -1,0 +1,41 @@
+﻿@model News_Portal.Models.RSSFeed.RSSFeed
+@{
+    ViewBag.Title = "Description";
+}
+
+<table class="table table-hover" style="margin-top:15px">
+    <tbody>
+        <tr>
+            <td style="font-weight:bold;font-size:28px">@Model.Title</td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div id="newData" style="display:none">
+    @Model.Description
+</div>
+<div id="newDatas">
+
+</div>
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/bootstrap")
+<script>
+    $(document).ready(function () {
+        var allDAta = $("#newData").text();
+        $("#newDatas").html(allDAta);
+        var href = $("#newDatas a").attr("href", "");
+        $('#newDatas a').each(function () {
+            if ($(this).text() == 'आज की ताज़ा ख़बरें पढ़ने के लिए दैनिक भास्कर ऍप डाउनलोड करें ')
+                $(this).text('');
+        });
+        $('#newDatas a').each(function () {
+            if ($(this).text() == 'Download Dainik Bhaskar App to read Latest Hindi News Today')
+                $(this).text('');
+        });
+        $("#newDatas a > img").attr('class', 'img-responsive').attr('style','margin-left:0px');
+        $("section").remove();
+    });
+</script>

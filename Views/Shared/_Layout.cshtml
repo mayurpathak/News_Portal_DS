@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/Content/images/favicon.ico" type="image/x-icon">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/fontgoogle.css" rel="stylesheet" type='text/css'/>
+    <link href="~/Content/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/animate.css" />
+    <link href="~/Content/css/custom-red.css" rel="stylesheet" id="style">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/css/owl.transitions.css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+</head>
+<body>
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+    <div class="wrapper" style="margin-top:-50px">
+        <div class="header-toolbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-16 text-uppercase">
+                        <div class="row">
+                            <div class="col-sm-8 col-xs-16">
+                                <ul id="inline-popups" class="list-inline">
+                                    <li class="hidden-xs"><a href="#">advertisement</a></li>
+                                    <li><a class="open-popup-link" href="#log-in" data-effect="mfp-zoom-in">Contact Us</a></li>
+                                    <li><a class="open-popup-link" href="#create-account" data-effect="mfp-zoom-in">languages</a></li>
+                                    <li><a href="#">About</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-16 col-sm-8">
+                                <div class="row">
+                                    <div id="weather" class="col-xs-16 col-sm-8 col-lg-9"></div>
+                                    <div id="time-date" class="col-xs-16 col-sm-8 col-lg-7"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-header">
+            <!-- header start -->
+            <div class="container header">
+                <div class="row">
+                    <div class="col-sm-5 col-md-5 wow fadeInUpLeft animated"><a class="navbar-brand" href="~/Home/Home">globalnews</a></div>
+                    <div class="col-sm-11 col-md-11 hidden-xs text-right"><img src="~/Content/images/ads/468-60-ad.gif" width="468" height="60" alt="" /></div>
+                </div>
+            </div>
+            <!-- header end -->
+            <!-- nav and search start -->
+            <div class="nav-search-outer">
+                <!-- nav start -->
+
+                <nav class="navbar navbar-inverse" role="navigation">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-16">
+                                <a href="javascript:;" class="toggle-search pull-right"><span class="ion-ios7-search"></span></a>
+                                <div class="navbar-header">
+                                    <button type="button" value="0" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                                </div>
+                                <div class="collapse navbar-collapse" id="navbar-collapse">
+                                    <ul class="nav navbar-nav text-uppercase main-nav ">
+                                        <li class="active"><a href="~/Home/Home"><span class="glyphicon glyphicon-home"></span></a></li>
+                                        <li class="dropdown">
+                                            <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1007" class="dropdown-toggle" data-toggle="dropdown">मध्य प्रदेश<span class="ion-ios7-arrow-down nav-icn"></span></a>
+                                            <ul class="dropdown-menu text-capitalize" role="menu">
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1008">बड़वानी</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1010">भोपाल </a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1011">इंदौर</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1014">रतलाम</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1012">झाबुआ</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1013">खरगोन</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1016">मंदसौर</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1015">उज्जैन</a> </li>
+                                            </ul>
+                                        </li>
+                                        <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1000">देश</a></li>
+                                        <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1001">विदेश</a></li>
+                                        <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1017&from=childdata">अपराध</a></li>
+                                        <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1002">बॉलीवुड</a></li>
+                                        <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1004">स्पोर्ट्स</a></li>
+                                        <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1003">शिक्षा</a></li>
+                                        <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1009">आज का राशिफल</a></li>
+                                        <li><a href="javascript:void(0)"><span style="text-transform:lowercase">e</span>-Paper</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- nav end -->
+                    <!-- search start -->
+
+                    <div class="search-container ">
+                        <div class="container">
+                            <form action="" method="" role="search">
+                                <input id="search-bar" placeholder="Type & Hit Enter.." autocomplete="off">
+                            </form>
+                        </div>
+                    </div>
+                    <!-- search end -->
+                </nav>
+                <!--nav end-->
+            </div>
+            <!-- nav and search end-->
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <hr />
+    <footer>
+        <div class="top-sec">
+            <div class="container ">
+                <div class="row match-height-container">
+                    <div class="col-sm-6 subscribe-info wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="40">
+                        <div class="row">
+                            <div class="col-sm-16">
+                                <div class="f-title">satpuda sandesh</div>
+                                @*<p>Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>*@
+                            </div>
+                            <div class="col-sm-16">
+                                <div class="f-title">subscribe to satpuda sandesh</div>
+                                <form class="form-inline">
+                                    <input type="email" class="form-control" id="input-email" placeholder="Type your e-mail adress">
+                                    <button type="submit" class="btn"> <span class="ion-paper-airplane text-danger"></span> </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 popular-tags  wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="40">
+                        <div class="f-title">popular tags</div>
+                        <ul class="tags list-unstyled pull-left">
+                            <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1002">बॉलीवुड</a></li>
+                            <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1000">देश</a></li>
+                            <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1001">विदेश</a></li>
+                            <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1009">राशिफल</a></li>
+                            <li><a href="#">Entertainment</a></li>
+                            <li><a href="#">Helth</a></li>
+                            <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1003">शिक्षा</a></li>
+                            <li><a href="#">Technology</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-5 recent-posts  wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="40">
+                        <div class="f-title">recent posts</div>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#">
+                                    <div class="row">
+                                        <div class="col-sm-4"><img class="img-thumbnail pull-left" src="~/Content/images/footer-recent/f-recent-1.jpg" width="70" height="70" alt="" /> </div>
+                                        <div class="col-sm-12">
+                                            <h4>The evolution of the apple ..</h4>
+                                            <div class="f-sub-info">
+                                                <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
+                                                <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
+                                                <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="row">
+                                        <div class="col-sm-4 "><img class="img-thumbnail pull-left" src="~/Content/images/footer-recent/f-recent-2.jpg" width="70" height="70" alt="" /> </div>
+                                        <div class="col-sm-12">
+                                            <h4>The evolution of the apple ..</h4>
+                                            <div class="f-sub-info">
+                                                <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
+                                                <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
+                                                <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="row">
+                                        <div class="col-sm-4"><img class="img-thumbnail pull-left" src="~/Content/images/footer-recent/f-recent-3.jpg" width="70" height="70" alt="" /> </div>
+                                        <div class="col-sm-12">
+                                            <h4>The evolution of the apple ..</h4>
+                                            <div class="f-sub-info">
+                                                <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
+                                                <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
+                                                <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btm-sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-16">
+                        <div class="row">
+                            <div class="col-sm-10 col-xs-16 f-nav wow fadeInDown animated" data-wow-delay="0.5s" data-wow-offset="10">
+                                <ul class="list-inline ">
+                                    <li> <a href="~/Home/Home"><span class="glyphicon glyphicon-home"></span></a> </li>
+                                    <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1007">मध्य प्रदेश</a> </li>
+                                    <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1000"> देश </a> </li>
+                                    <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1001"> विदेश </a> </li>
+                                    <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1002"> बॉलीवुड </a> </li>
+                                    <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1004"> स्पोर्ट्स </a> </li>
+                                    <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1009">राशिफल</a> </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-xs-16 copyrights text-right wow fadeInDown animated" data-wow-delay="0.5s" data-wow-offset="10">© 2019 SATPUDA SANDESH - ALL RIGHTS RESERVED</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-16 f-social  wow fadeInDown animated" data-wow-delay="1s" data-wow-offset="10">
+                        <ul class="list-inline">
+                            <li> <a href="#"><span class="ion-social-twitter"></span></a> </li>
+                            <li> <a href="#"><span class="ion-social-facebook"></span></a> </li>
+                            <li> <a href="#"><span class="ion-social-instagram"></span></a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="create-account" class="white-popup mfp-with-anim mfp-hide">
+        <form role="form">
+            <h3>Create Account</h3>
+            <hr>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" tabindex="1">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" tabindex="2">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" name="display_name" id="display_name" class="form-control" placeholder="Display Name" tabindex="3">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" id="email" class="form-control " placeholder="Email Address" tabindex="4">
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control " placeholder="Password" tabindex="5">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm Password" tabindex="6">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-16">
+                    <input type="submit" value="Register" class="btn btn-danger btn-block btn-lg" tabindex="7">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="log-in" class="white-popup mfp-with-anim mfp-hide">
+        <form role="form">
+            <h3>Contact Us</h3>
+            <hr>
+            <div class="form-group">
+                <b>
+                    <span>Dilip Sharma</span><br />
+                    <span>Mo. 9904847952</span><br />
+                    <span>Email-ID: MAYURPATHAK888@gmail.com</span>
+                </b>
+            </div>
+        </form>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery.easing.1.3.js"></script>
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/js/style-switcher.js"></script> <!--wow animation-->
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/jquery.ticker.js"></script>
+    <script src="~/Content/js/owl.carousel.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.js"></script>
+    <script src="~/Content/js/jquery.simpleWeather.min.js"></script>
+    <script src="~/Content/js/jquery.pickmeup.js"></script>
+    <script src="~/Content/js/jquery.scrollUp.js"></script>
+    <script src="~/Content/js/jquery.nicescroll.js"></script>
+    <script src="~/Content/js/jquery.nicescroll.plus.js"></script>
+    <script src="~/Content/js/masonry.pkgd.js"></script>
+    <script src="~/Content/js/enquire.js"></script>
+    <script src="~/Content/js/custom-fun.js"></script>
+    <script>
+        //$(document).ready(function () {
+        //    $("img").attr('class', 'img-responsive')
+        //})
+        $(".navbar-toggle").click(function () {
+            var element = this.value;
+            if (element > 0) {
+                $("#navbar-collapse").attr('class', 'navbar-collapse collapse')
+                $("#navbar-collapse").attr('style','display: none!important;')
+                this.value = 0;
+            } else {
+                $("#navbar-collapse").attr('class', 'navbar-collapse collapse in');
+                $(".navbar-collapse.collapse.in").attr('style','display: block!important;')
+                this.value = 1;
+            }
+        });
+    </script>
+</body>
+</html>

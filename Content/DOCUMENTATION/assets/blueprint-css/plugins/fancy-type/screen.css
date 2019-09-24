@@ -1,0 +1,25 @@
+form p + p {
+	text-indent: 0;
+}
+.alt {
+	color: #3d566e;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-weight: normal;
+}
+.dquo {
+	margin-left: -.5em;
+}
+p.incr, .incr p {
+	font-size: 10px;
+	line-height: 1.44em;
+	margin-bottom: 1.5em;
+}
+.caps {
+	font-variant: small-caps;
+	letter-spacing: 1px;
+	text-transform: lowercase;
+	font-size: 1.2em;
+	line-height: 1%;
+	font-weight: bold;
+	padding: 0 2px;
+}
