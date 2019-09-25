@@ -135,6 +135,7 @@
     <Compile Include="Models\Feeds.cs" />
     <Compile Include="Models\RSSFeed\RSSFeed.cs" />
     <Compile Include="Models\RSSFeed\RSSFeedMaster.cs" />
+    <Compile Include="Models\RSSFeed\UserCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
