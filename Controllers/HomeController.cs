@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 
@@ -122,8 +120,11 @@ namespace News_Portal.Controllers
             if (string.IsNullOrEmpty(ip))
             {
                 ip = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                string[] ipAddresses = ip.Split(':');
+                string ipAddress = ipAddresses[0];
+                return ipAddress;
             }
-            return ip;
+            return "";
         }
         public ActionResult About()
         {
