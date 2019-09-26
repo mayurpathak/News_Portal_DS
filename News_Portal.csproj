@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RSSMasterController.cs" />
     <Compile Include="Global.asax.cs">
@@ -133,6 +134,7 @@
     </Compile>
     <Compile Include="Models\EntityData\SystemDB.cs" />
     <Compile Include="Models\Feeds.cs" />
+    <Compile Include="Models\RSSFeed\Login.cs" />
     <Compile Include="Models\RSSFeed\RSSFeed.cs" />
     <Compile Include="Models\RSSFeed\RSSFeedMaster.cs" />
     <Compile Include="Models\RSSFeed\UserCount.cs" />
@@ -372,6 +374,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\RSSImages\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
