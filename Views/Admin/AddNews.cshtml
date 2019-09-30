@@ -1,0 +1,72 @@
+﻿@model News_Portal.Models.RSSFeed.RSSFeed
+@{
+    ViewBag.Title = "AddNews";
+}
+<link href="~/Content/css/datepicker.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+<style>
+    /* Assign the hindi font*/
+    @@font-face {
+        /* Font Name to use*/
+        font-family: 'HindiFont';
+        font-size: large;
+        src: url("../Content/fonts/k010.TTF")format('truetype');
+    }
+
+    .hindiFont {
+        /* Assign the font*/
+        font-family: 'HindiFont';
+        /*here we need to access @@font-face also*/
+    }
+</style>
+@using (Html.BeginForm("AddNews", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container">
+        <br />
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="inputState"> Select Category :</label>
+                @Html.DropDownListFor(model => model.RSSFeedID, new SelectList(Model.RSSFeedDDL, "RSSFeedID", "RSSName", Model.RSSFeedID), new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-9">
+                <label for=" lblSelectCategory">Title :</label>
+                <input type="text" class="form-control hindiFont" style="font-size: large;max-width:100%;width:100%" id="Title" name="Title" placeholder="शीर्षक" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputPassword4">Description :</label>
+                <textarea class="span6 hindiFont" id="Description" name="Description" rows="3" style="max-width:100%; margin: 0px; height: 260px; width: 1002px;" placeholder="विवरण" required></textarea>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Published Date</label>
+                <input type="date" data-provide="datepicker" class="form-control" id="PublishDate" name="PublishDate" placeholder="Publish Date" required>                
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress2">Image Upload</label>
+                <input type="file" name="file" class="form-control-file" id="file" />
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-primary">Add News</button>
+                <button type="button" class="btn btn-primary">Cancel</button>
+                <button type="button" class="btn btn-primary">Reset</button>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    //$(document).ready(function () {
+    //    $('input[name="date"]').datepicker({
+    //        format: 'mm/dd/yyyy',
+    //        container: container,
+    //        todayHighlight: true,
+    //        autoclose: true,
+    //    })
+    //})
+
+</script>

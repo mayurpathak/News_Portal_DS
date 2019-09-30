@@ -25,8 +25,20 @@ namespace News_Portal.Controllers
                 {
                     RSSFeed rSSFeed = new RSSFeed();
                     DateTime testingDate = db.RSSFeed.Where(x => x.RSSFeedID == RSSFeedID).ToList().OrderByDescending(x => x.PublishDate).Select(x => x.PublishDate).FirstOrDefault();
-                    List<RSSFeed> rssFeedList = db.RSSFeed.Where(x => x.RSSFeedID == RSSFeedID && DbFunctions.TruncateTime(x.PublishDate) == testingDate.Date).ToList();
-                    //DownloadImages(RSSFeedID,from);
+                    RSSFeedMaster rSSFeedMaster = db.RSSFeedMaster.Where(x => x.RSSFeedID == RSSFeedID).FirstOrDefault();
+                    var rssFeedList = new List<RSSFeed>();
+                    if (rSSFeedMaster.RSSName == "Horoscope")
+                    {
+                        rssFeedList = db.RSSFeed.Where(x => x.RSSFeedID == RSSFeedID && DbFunctions.TruncateTime(x.PublishDate) == testingDate.Date).ToList();
+                    }
+                    else
+                    {
+                        rssFeedList = db.RSSFeed.Where(x => x.RSSFeedID == RSSFeedID).OrderByDescending(x => x.PublishDate).Take(20).ToList();
+                    }
+                    if (Convert.ToBoolean(Session["SuperAdmin"]))
+                    {
+                        DownloadImages(RSSFeedID,from);
+                    }
                     return View("~/Views/RSSMaster/News.cshtml", rssFeedList);
                 }
             }
@@ -65,11 +77,14 @@ namespace News_Portal.Controllers
 
                     foreach (var item in rssFeedList)
                     {
+                        try
+                        {
+
                         string descriptionCount = item.Description;
                         int Start, End;
                         if (descriptionCount.Contains("src=") && descriptionCount.Contains("/>"))
                         {
-                            if (from != null)
+                            if (from != "")
                             {
                                 Start = descriptionCount.IndexOf("<img src=", 0) + "<img src=".Length;
                                 End = descriptionCount.IndexOf(">", Start);
@@ -79,7 +94,7 @@ namespace News_Portal.Controllers
                                 Start = descriptionCount.IndexOf("src=", 0) + "src=".Length;
                                 End = descriptionCount.IndexOf("/>", Start);
                             }
-                            string imgpath = descriptionCount.Substring(Start, End - Start).Replace("\"", "").Replace("\"", "");
+                            string imgpath = descriptionCount.Substring(Start, End - Start).Replace("\"", "").Replace("\"", "");                            
                             string[] imageNames = imgpath.Split('/').ToArray();
                             string imageName = imageNames.Last();
                             string imgBase64String = string.Empty;
@@ -102,6 +117,15 @@ namespace News_Portal.Controllers
                             }
                             db.Entry(rssFeedChild).State = EntityState.Modified;
                             db.SaveChanges();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            if (ex.Message.Contains("404"))
+                            {
+                                continue;
+                            }
+                            throw ex;
                         }
                     }
                 }
@@ -112,7 +136,7 @@ namespace News_Portal.Controllers
                 throw ex;
             }
         }
-        protected string GetBase64StringForImage(string imgPath)
+        public string GetBase64StringForImage(string imgPath)
         {
             byte[] imageBytes = System.IO.File.ReadAllBytes(imgPath);
             string fileExtention = System.IO.Path.GetExtension(imgPath);

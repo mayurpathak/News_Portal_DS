@@ -1,0 +1,29 @@
+﻿@model News_Portal.Models.RSSFeed.ePaper
+@{
+    ViewBag.Title = "ePaper";
+}
+@using (Html.BeginForm("ePaper", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container">
+        <br />
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress2">Upload Paper</label>
+                <input type="file" name="file" class="form-control-file" id="file" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Date</label>
+                <input type="date" data-provide="datepicker" class="form-control" id="UploadedDate" name="UploadedDate" placeholder="Uploaded Date" required>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-primary">Add Paper</button>
+                <button type="button" class="btn btn-primary">Reset</button>
+            </div>
+        </div>
+    </div>
+}

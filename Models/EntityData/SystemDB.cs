@@ -23,5 +23,6 @@ namespace News_Portal.Models.EntityData
         public DbSet<RSSFeedMaster> RSSFeedMaster { get; set; }
         public DbSet<UserCount> UserCount { get; set; }
         public DbSet<Login> Login { get; set; }
+        public DbSet<ePaper> ePaper { get; set; }
     }
 }
