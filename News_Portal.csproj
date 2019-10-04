@@ -126,6 +126,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BLL\CommonCode.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ErrorHandlingController.cs" />
+    <Compile Include="Controllers\GetHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RSSMasterController.cs" />
     <Compile Include="Global.asax.cs">
@@ -133,7 +137,10 @@
     </Compile>
     <Compile Include="Models\EntityData\SystemDB.cs" />
     <Compile Include="Models\Feeds.cs" />
+    <Compile Include="Models\RSSFeed\ePaper.cs" />
+    <Compile Include="Models\RSSFeed\Login.cs" />
     <Compile Include="Models\RSSFeed\RSSFeed.cs" />
+    <Compile Include="Models\RSSFeed\RSSFeedDDL.cs" />
     <Compile Include="Models\RSSFeed\RSSFeedMaster.cs" />
     <Compile Include="Models\RSSFeed\UserCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -144,11 +151,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap-datepicker.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\custom-blue.css" />
     <Content Include="Content\css\custom-green.css" />
     <Content Include="Content\css\custom-purple.css" />
     <Content Include="Content\css\custom-red.css" />
+    <Content Include="Content\css\datepicker.css" />
     <Content Include="Content\css\fontgoogle.css" />
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\magnific-popup.css" />
@@ -262,6 +271,11 @@
     <Content Include="Content\images\comments\com-3.jpg" />
     <Content Include="Content\images\comments\com-4.jpg" />
     <Content Include="Content\images\comments\com-5.jpg" />
+    <Content Include="Content\images\Error\Access Denied.jpg" />
+    <Content Include="Content\images\Error\Access_Denied.jpg" />
+    <Content Include="Content\images\Error\No_Image_Available_2.png" />
+    <Content Include="Content\images\Error\something.jpg" />
+    <Content Include="Content\images\Error\Something_went.jpg" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\footer-recent\f-recent-1.jpg" />
     <Content Include="Content\images\footer-recent\f-recent-2.jpg" />
@@ -270,7 +284,6 @@
     <Content Include="Content\images\general\logo-blue.png" />
     <Content Include="Content\images\general\logo-green.png" />
     <Content Include="Content\images\general\logo-purple.png" />
-    <Content Include="Content\images\general\logo-red.png" />
     <Content Include="Content\images\general\status-blue.gif" />
     <Content Include="Content\images\general\status-green.gif" />
     <Content Include="Content\images\general\status-purple.gif" />
@@ -327,6 +340,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\DOCUMENTATION\assets\blueprint-css\plugins\.DS_Store" />
@@ -340,8 +354,10 @@
     <Content Include="Content\fonts\ionicons.ttf" />
     <Content Include="Content\fonts\ionicons.woff" />
     <Content Include="Content\fonts\WeatherIcons-Regular.otf" />
+    <Content Include="Content\fonts\k010.TTF" />
     <None Include="Properties\PublishProfiles\DSNewsPortal - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\datetime.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -368,10 +384,20 @@
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\RSSMaster\News.cshtml" />
     <Content Include="Views\RSSMaster\Description.cshtml" />
+    <Content Include="Views\Admin\AddNews.cshtml" />
+    <Content Include="Views\Admin\ePaper.cshtml" />
+    <Content Include="Views\Error\Unauthorized.cshtml" />
+    <Content Include="Views\GetHome\NationalData.cshtml" />
+    <Content Include="Views\GetHome\SportsData.cshtml" />
+    <Content Include="Views\GetHome\BollywoodData.cshtml" />
+    <Content Include="Views\GetHome\BreakingNewsData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\AddNews\" />
+    <Folder Include="Content\ePaper\" />
     <Folder Include="Content\images\RSSImages\" />
+    <Folder Include="Views\ErrorHandling\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

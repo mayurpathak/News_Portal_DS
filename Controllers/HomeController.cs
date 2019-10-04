@@ -1,4 +1,5 @@
-﻿using News_Portal.Models;
+﻿using News_Portal.BLL;
+using News_Portal.Models;
 using News_Portal.Models.EntityData;
 using News_Portal.Models.RSSFeed;
 using System;
@@ -14,6 +15,7 @@ namespace News_Portal.Controllers
     {
         public ActionResult Home()
         {
+            var rssFeedList = new List<RSSFeed>();
             using (SystemDB db = new SystemDB())
             {
                 string ipAddress = GetIp();
@@ -34,77 +36,108 @@ namespace News_Portal.Controllers
                         Session["TotalUserCount"] = totalUserCount;
                     }
                 }
+                int[] rssids = new int[] { 1008, 1010, 1011 };
+                CommonCode commonCode = new CommonCode();
+                rssFeedList = commonCode.HomeData();
             }
-            return View();
+            return View(rssFeedList);
         }
-        [HttpPost]
-        public ActionResult Home(int RSSID = 0)
+        //[HttpPost]
+        //[Authorize]
+        public ActionResult GetNews(int Id = 0)
         {
-            using (SystemDB db = new SystemDB())
+            try
             {
-                var rssMasterList = db.RSSFeedMaster.ToList();
-                foreach (var items in rssMasterList)
+                using (SystemDB db = new SystemDB())
                 {
-                    string RSSURL = items.RSSURL;
-                    XDocument xDoc = new XDocument();
-                    xDoc = XDocument.Load(RSSURL);
-                    //xDoc = XDocument.Load("test.xml");
-                    var descriptions = xDoc.Descendants("description").ToList();
-                    string descriptionCount = Convert.ToString(descriptions[1].FirstNode);
-
-                    int Start, End;
-                    if (descriptionCount.Contains("src=") && descriptionCount.Contains("/>"))
+                    if (Convert.ToBoolean(Session["SuperAdmin"]))
                     {
-                        Start = descriptionCount.IndexOf("src=", 0) + "src=".Length;
-                        End = descriptionCount.IndexOf("/>", Start);
-                        string imgpath = descriptionCount.Substring(Start, End - Start).Replace("\"", "").Replace("\"", "");
-                        //var url = "https://i10.dainikbhaskar.com/thumbnails/116x87/web2images/www.bhaskar.com/2019/08/29/0521_ms-dhoni_1.jpg";
-                        string[] imageNames = imgpath.Split('/').ToArray();
-                        string imageName = imageNames.Last();
-
-                        //using (WebClient client = new WebClient())
-                        //{
-                        //    string path = @"E:\RSSFeedWebApplication\RSSFeedMVC\Content\Images\" + imageName + "";
-                        //    client.DownloadFile(new Uri(imgpath), path);
-
-                        //    string imgBase64String = GetBase64StringForImage(path);
-                        //}
-                    }
-
-
-                    var RSSFeedData = (from x in xDoc.Descendants("item")
-                                       select new Feeds
-                                       {
-                                           Title = ((string)x.Element("title")),
-                                           Link = ((string)x.Element("link")),
-                                           Description = ((string)x.Element("description")),
-                                           PublishDate = ((string)x.Element("pubDate"))
-                                       }).ToList();
-
-                    foreach (var item in RSSFeedData)
-                    {
-                        string pubDate = item.PublishDate.Replace("\n\t   ", "").Replace(" GMT\t", "");
-                        DateTime publishDate = Convert.ToDateTime(pubDate);
-                        var dataCheck = db.RSSFeed.Where(x => x.PublishDate == publishDate && x.Title == item.Title).FirstOrDefault();
-                        if (dataCheck == null)
+                        var rssMasterList = db.RSSFeedMaster.ToList();
+                        foreach (var items in rssMasterList)
                         {
-                            var rssFeedChild = new RSSFeed()
+                            try
                             {
-                                RSSFeedID = items.RSSFeedID,
-                                Title = item.Title,
-                                PublishDate = Convert.ToDateTime(pubDate),
-                                Description = item.Description,
-                                CreatedDate = DateTime.Now
-                            };
-                            db.RSSFeed.Add(rssFeedChild);
-                            db.SaveChanges();
+                                string RSSURL = items.RSSURL;
+                                XDocument xDoc = new XDocument();
+                                xDoc = XDocument.Load(RSSURL);
+                                //xDoc = XDocument.Load("test.xml");
+                                var descriptions = xDoc.Descendants("description").ToList();
+                                string descriptionCount = Convert.ToString(descriptions[1].FirstNode);
+
+                                int Start, End;
+                                if (descriptionCount.Contains("src=") && descriptionCount.Contains("/>"))
+                                {
+                                    Start = descriptionCount.IndexOf("src=", 0) + "src=".Length;
+                                    End = descriptionCount.IndexOf("/>", Start);
+                                    string imgpath = descriptionCount.Substring(Start, End - Start).Replace("\"", "").Replace("\"", "");
+                                    //var url = "https://i10.dainikbhaskar.com/thumbnails/116x87/web2images/www.bhaskar.com/2019/08/29/0521_ms-dhoni_1.jpg";
+                                    string[] imageNames = imgpath.Split('/').ToArray();
+                                    string imageName = imageNames.Last();
+
+                                    //using (WebClient client = new WebClient())
+                                    //{
+                                    //    string path = @"E:\RSSFeedWebApplication\RSSFeedMVC\Content\Images\" + imageName + "";
+                                    //    client.DownloadFile(new Uri(imgpath), path);
+
+                                    //    string imgBase64String = GetBase64StringForImage(path);
+                                    //}
+                                }
+
+
+                                var RSSFeedData = (from x in xDoc.Descendants("item")
+                                                   select new Feeds
+                                                   {
+                                                       Title = ((string)x.Element("title")),
+                                                       Link = ((string)x.Element("link")),
+                                                       Description = ((string)x.Element("description")),
+                                                       PublishDate = ((string)x.Element("pubDate"))
+                                                   }).ToList();
+
+                                foreach (var item in RSSFeedData)
+                                {
+                                    string pubDate = item.PublishDate.Replace("\n\t   ", "").Replace(" GMT\t", "");
+                                    DateTime publishDate = Convert.ToDateTime(pubDate);
+                                    var dataCheck = db.RSSFeed.Where(x => x.PublishDate == publishDate && x.Title == item.Title).FirstOrDefault();
+                                    if (dataCheck == null)
+                                    {
+                                        var rssFeedChild = new RSSFeed()
+                                        {
+                                            RSSFeedID = items.RSSFeedID,
+                                            Title = item.Title,
+                                            PublishDate = Convert.ToDateTime(pubDate),
+                                            Description = item.Description,
+                                            CreatedDate = DateTime.Now
+                                        };
+                                        db.RSSFeed.Add(rssFeedChild);
+                                        db.SaveChanges();
+                                    }
+                                }
+                                ViewBag.RSSFeed = RSSFeedData;
+                                ViewBag.URL = Id;
+                            }
+                            catch (Exception ex)
+                            {
+                                if (ex.Message.Contains("The remote server returned an error: (500) Internal Server Error."))
+                                {
+                                    continue;
+                                }
+                            }
                         }
+
+                        CommonCode commonCode = new CommonCode();
+                        var rssFeedList = commonCode.HomeData();
+                        return View("~/Views/Home/Home.cshtml", rssFeedList);
                     }
-                    ViewBag.RSSFeed = RSSFeedData;
-                    ViewBag.URL = RSSID;
+                    else
+                    {
+                        return View("~/Views/Error/Unauthorized.cshtml");
+                    }
                 }
             }
-            return View();
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         protected string GetBase64StringForImage(string imgPath)
         {

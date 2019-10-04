@@ -23,18 +23,25 @@
     <div id="preloader">
         <div id="status"></div>
     </div>
-    <div class="wrapper" style="margin-top:-50px">
+    <div class="wrapper" style="margin-top:-30px">
         <div class="header-toolbar">
             <div class="container">
                 <div class="row">
                     <div class="col-md-16 text-uppercase">
                         <div class="row">
-                            <div class="col-sm-8 col-xs-16">
+                            <div class="col-sm-8 col-xs-16" style="contain: size;">
                                 <ul id="inline-popups" class="list-inline">
                                     <li class="hidden-xs"><a href="#">advertisement</a></li>
                                     <li><a class="open-popup-link" href="#log-in" data-effect="mfp-zoom-in">Contact Us</a></li>
-                                    <li><a class="open-popup-link" href="#create-account" data-effect="mfp-zoom-in">languages</a></li>
+                                    <li><a class="open-popup-link" href="#create-account" data-effect="mfp-zoom-in">login</a></li>
                                     <li><a href="#">About</a></li>
+                                    @if (Convert.ToBoolean(Session["SuperAdmin"]))
+                                    {
+                                        <li><a href="~/Admin/AddNews">Add News</a></li>
+                                        <li><a href="~/Admin/ePaper">Add Paper</a></li>
+                                        <li><a href="~/Home/GetNews/0">Get News</a></li>
+                                        <li><a href="~/Admin/Logout">Logout</a></li>
+                                    }
                                 </ul>
                             </div>
                             <div class="col-xs-16 col-sm-8">
@@ -75,14 +82,14 @@
                                         <li class="dropdown">
                                             <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1007" class="dropdown-toggle" data-toggle="dropdown">मध्य प्रदेश<span class="ion-ios7-arrow-down nav-icn"></span></a>
                                             <ul class="dropdown-menu text-capitalize" role="menu">
-                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1008">बड़वानी</a> </li>
-                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1010">भोपाल </a> </li>
-                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1011">इंदौर</a> </li>
-                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1014">रतलाम</a> </li>
-                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1012">झाबुआ</a> </li>
-                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1013">खरगोन</a> </li>
-                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1016">मंदसौर</a> </li>
-                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1015">उज्जैन</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1008&from=childdata">बड़वानी</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1010&from=childdata">भोपाल </a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1011&from=childdata">इंदौर</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1014&from=childdata">रतलाम</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1012&from=childdata">झाबुआ</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1013&from=childdata">खरगोन</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1016&from=childdata">मंदसौर</a> </li>
+                                                <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1015&from=childdata">उज्जैन</a> </li>
                                             </ul>
                                         </li>
                                         <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1000">देश</a></li>
@@ -91,7 +98,7 @@
                                         <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1002">बॉलीवुड</a></li>
                                         <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1004">स्पोर्ट्स</a></li>
                                         <li> <a href="~/RSSMaster/RSSMenuData?RSSFeedID=1003">शिक्षा</a></li>
-                                        <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1009">आज का राशिफल</a></li>
+                                        <li><a href="~/RSSMaster/RSSMenuData?RSSFeedID=1009&from=childdata">आज का राशिफल</a></li>
                                         <li><a href="javascript:void(0)"><span style="text-transform:lowercase">e</span>-Paper</a></li>
                                     </ul>
                                 </div>
@@ -137,7 +144,12 @@
                                 </form>
                             </div>
                             <div class="col-sm-16">
-                                <div class="f-title">Total Number of visitors:- @Session["TotalUserCount"].ToString()</div>
+                                <div class="f-title">
+                                    Total User Count:- @if (Session["TotalUserCount"] != null)
+                                    {
+                                        @Session["TotalUserCount"].ToString()
+                                    }
+                                </div>
                                 @*<p>Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>*@
                             </div>
                         </div>
@@ -240,22 +252,24 @@
         </div>
     </footer>
     <div id="create-account" class="white-popup mfp-with-anim mfp-hide">
-        <form role="form">
-            <h3>Create Account</h3>
-            <hr>
-            <div class="row">
-                <div class="col-sm-8">
-                    <div class="form-group">
-                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" tabindex="1">
+        @*<form role="form" action="~/Admin/Login">*@
+            @using (Html.BeginForm("Login","Admin",FormMethod.Post))
+            {
+                <h3>Login</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <input type="text" name="Username" id="Username" class="form-control" placeholder="UserName" tabindex="1" required="">
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <input type="password" name="Password" id="Password" class="form-control" placeholder="Password" tabindex="2" required="">
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-8">
-                    <div class="form-group">
-                        <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" tabindex="2">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
+                @*<div class="form-group">
                 <input type="text" name="display_name" id="display_name" class="form-control" placeholder="Display Name" tabindex="3">
             </div>
             <div class="form-group">
@@ -272,14 +286,15 @@
                         <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm Password" tabindex="6">
                     </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-sm-16">
-                    <input type="submit" value="Register" class="btn btn-danger btn-block btn-lg" tabindex="7">
+            </div>*@
+                <hr>
+                <div class="row">
+                    <div class="col-sm-16">
+                        <input type="submit" value="Login" class="btn btn-danger btn-block btn-lg"  tabindex="7">
+                    </div>
                 </div>
-            </div>
-        </form>
+            }
+            @*</form>*@
     </div>
     <div id="log-in" class="white-popup mfp-with-anim mfp-hide">
         <form role="form">
@@ -287,9 +302,10 @@
             <hr>
             <div class="form-group">
                 <b>
-                    <span>Dilip Sharma</span><br />
-                    <span>Mo. 9904847952</span><br />
-                    <span>Email-ID: MAYURPATHAK888@gmail.com</span>
+                    <span>Dileep Sharma</span><br />
+                    <span>Mo. +91-7828562777</span><br />
+                    <span>Mo. +91-9754642111</span><br />
+                    <span>Email-ID: satpudasandesh777@gmail.com</span>
                 </b>
             </div>
         </form>

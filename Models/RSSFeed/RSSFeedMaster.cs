@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace News_Portal.Models.RSSFeed
 {
@@ -14,5 +13,7 @@ namespace News_Portal.Models.RSSFeed
         public string RSSURL { get; set; }
         public Nullable<System.DateTime> CreatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedBy { get; set; }
+        [NotMapped]
+        public List<RSSFeedDDL> RSSFeedDDL { get; set; }
     }
 }

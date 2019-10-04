@@ -1,0 +1,51 @@
+﻿@model List<News_Portal.Models.RSSFeed.RSSFeed>
+@{
+    int i = 0;
+}
+@if (Model != null && Model.Count > 0)
+{
+    <div class="row">
+        <div class="col-md-8 col-sm-9 col-xs-16">
+            <div class="topic">
+                @foreach (var item in Model)
+                {
+                    <a href="~/RSSMaster/RSSChildData?RSSFeedID=@item.RSSFeedID&RSSID=@item.RSSID">
+                        <img class="img-thumbnail" src="@item.Image" width="600" height="398" alt="" />
+                        <h3>@item.Title</h3>
+                        <div class="text-danger sub-info-bordered">
+                            <div class="time"><span class="ion-android-data icon"></span>@item.PublishDate.ToString("dd/MM/yyyy")</div>
+                            @*<div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
+                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>*@
+                        </div>
+                    </a>
+                    i++;
+                    break;
+                }
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-7 col-xs-16">
+            <ul class="list-unstyled">
+                @for (i = 1; i < Model.Count; i++)
+                {
+                    <li>
+                        <a href="~/RSSMaster/RSSChildData?RSSFeedID=@Model[i].RSSFeedID&RSSID=@Model[i].RSSID">
+                            <div class="row">
+                                <div class="col-sm-5 hidden-sm hidden-md"><img class="img-thumbnail pull-left" src="@Model[i].Image" width="76" height="76" alt="" /> </div>
+                                <div class="col-sm-16 col-md-16 col-lg-11">
+                                    <h4>
+                                        @Model[i].Title
+                                    </h4>
+                                    <div class="text-danger sub-info">
+                                        <div class="time"><span class="ion-android-data icon"></span>@Model[i].PublishDate.ToString("dd/MM/yyyy")</div>
+                                        @*<div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
+                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}

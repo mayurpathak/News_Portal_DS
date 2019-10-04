@@ -6,54 +6,55 @@
 }
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
-    <div class="container">
-        <br />
-        @if (Model != null && Model.Count > 0)
-        {
-            foreach (var item in Model)
-            {
-                    <!-- left sec start -->
-                    <div class="row col-md-6 col-sm-9">
-                        <div class="row">
-                            <div class="sec-topic col-sm-16 wow fadeInDown animated  animated" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                                <div class="row">
-                                    <div class="col-sm-4"><img width="100" height="100" alt="" src="@item.Image" class="img-thumbnail"></div>
-                                    <div class="col-sm-12">
-                                        <a href="~/RSSMaster/RSSChildData?RSSFeedID=@item.RSSFeedID&RSSID=@item.RSSID">
-                                            <div class="sec-info">
-                                                <h3>@item.Title</h3>
-                                                @*<div class="text-danger sub-info-bordered">
-                                                    <div class="time"><span class="ion-android-data icon"></span>@item.PublishDate</div>
-                                                </div>*@
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
 
+<div class="container">
+    <br />
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var item in Model)
+        {
+            <!-- left sec start -->
+            <div class="row col-md-6 col-sm-9">
+                <div class="row">
+                    <div class="sec-topic col-sm-16 wow fadeInDown animated  animated" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
+                        <div class="row">
+                            <div class="col-sm-4"><img width="100" height="100" alt="" src="@item.Image" class="img-thumbnail"></div>
+                            <div class="col-sm-12">
+                                <a href="~/RSSMaster/RSSChildData?RSSFeedID=@item.RSSFeedID&RSSID=@item.RSSID">
+                                    <div class="sec-info">
+                                        <h3>@item.Title</h3>
+                                        @*<div class="text-danger sub-info-bordered">
+                                                <div class="time"><span class="ion-android-data icon"></span>@item.PublishDate</div>
+                                            </div>*@
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    <!-- left sec end -->
+                    </div>
 
                 </div>
-                @*<div class="form-group col-md-6">
+                <!-- left sec end -->
+
+            </div>
+            @*<div class="form-group col-md-6">
                     <img src="@item.Image" width="100" height="100" class="col-md-4" />
                     <a class="col-md-8" href="~/RSSMaster/RSSChildData?RSSFeedID=@item.RSSFeedID&RSSID=@item.RSSID"><h3 style="color:#3E7CFF;width: 150%;">@item.Title</h3></a>
                 </div>*@
-                i++;
-            }
+            i++;
         }
+    }
 
-        <div class="col-sm-16">
-            <hr>
-            <ul class="pagination">
-                <li><a href="#">«</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">»</a></li>
-            </ul>
-        </div>
-        <!-- right sec start -->
+    <div class="col-sm-16">
+        <hr>
+        <ul class="pagination">
+            <li><a href="#">«</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">»</a></li>
+        </ul>
     </div>
+    <!-- right sec start -->
+</div>
