@@ -153,8 +153,11 @@ namespace News_Portal.Controllers
             if (string.IsNullOrEmpty(ip))
             {
                 ip = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                string[] ipAddresses = ip.Split(':');
+                string ipAddress = ipAddresses[0];
+                return ipAddress;
             }
-            return ip;
+            return "";
         }
         public ActionResult About()
         {
