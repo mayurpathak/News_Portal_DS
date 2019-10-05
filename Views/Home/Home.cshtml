@@ -1,5 +1,7 @@
-﻿@{
+﻿@model List<News_Portal.Models.RSSFeed.RSSFeed>
+@{
     ViewBag.Title = "Satpuda Sandesh";
+    int j = 4, i = 0, k = 9, s = 14;
 }
 
 @using (Html.BeginForm())
@@ -12,18 +14,19 @@
 <div class="container">
     <div class="row">
         <!-- hot news start -->
-        <div class="col-sm-16 hot-news hidden-xs">
+        <div class="col-sm-16 hot-news">
             <div class="row">
                 <div class="col-sm-15">
                     <span class="ion-ios7-timer icon-news pull-left"></span>
                     <ul id="js-news" class="js-hidden">
-                        <li class="news-item"><a href="">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor</a></li>
-                        <li class="news-item"><a href="">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</a></li>
-                        <li class="news-item"><a href="">Donec quam felis, ultricies nec, pellentesque eu</a></li>
-                        <li class="news-item"><a href="">Nulla consequat massa quis enim. Donec pede justo, fringilla</a></li>
-                        <li class="news-item"><a href=""> Donec pede justo, fringilla vel, aliquet nec, vulputate eget ultricies nec, pellentesque</a></li>
-                        <li class="news-item"><a href="">In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo</a></li>
-                        <li class="news-item"><a href="">Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis </a></li>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            for (i = 21; i < Model.Count; i++)
+                            { 
+                                <li class="news-item"><a href="~/RSSMaster/RSSChildData?RSSFeedID=@Model[i].RSSFeedID&RSSID=@Model[i].RSSID">@Model[i].Title</a></li>
+                               
+                            }
+                        }
                     </ul>
                 </div>
                 <div class="col-sm-1 shuffle text-right"><a href="#"><span class="ion-shuffle"></span></a></div>
@@ -285,90 +288,7 @@
                         <div class="span-outer"><span class="pull-right text-danger last-update"><span class="ion-android-data icon"></span>Last update: 2 days ago</span> </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-11 col-sm-16">
-                            <div class="row">
-                                <div class="col-md-8 col-sm-9 col-xs-16">
-                                    <div class="topic">
-                                        <a href="#">
-                                            <img class="img-thumbnail" src="~/Content/images/business/business-main.jpg" width="600" height="398" alt="" />
-                                            <h3>Famous artist share his tracks for free</h3>
-                                            <div class="text-danger sub-info-bordered">
-                                                <div class="time"><span class="ion-android-data icon"></span>Dec 9 2014</div>
-                                                <div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                                                <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                            </div>
-                                        </a>
-                                        <p>Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-sm-7 col-xs-16">
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <a href="#">
-                                                <div class="row">
-                                                    <div class="col-sm-5 hidden-sm hidden-md"><img class="img-thumbnail pull-left" src="~/Content/images/business/business-th-1.jpg" width="76" height="76" alt="" /> </div>
-                                                    <div class="col-sm-16 col-md-16 col-lg-11">
-                                                        <h4>
-                                                            Irish cream and chocolate
-                                                            cheesecake
-                                                        </h4>
-                                                        <div class="text-danger sub-info">
-                                                            <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                            <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="row">
-                                                    <div class="col-sm-5 hidden-sm hidden-md"><img class="img-thumbnail pull-left" src="~/Content/images/business/business-th-2.jpg" width="76" height="76" alt="" /> </div>
-                                                    <div class="col-sm-16 col-md-16 col-lg-11">
-                                                        <h4>Nielsen forecasts smaller black friday </h4>
-                                                        <div class="text-danger sub-info">
-                                                            <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                            <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="row">
-                                                    <div class="col-sm-5 hidden-sm hidden-md"><img class="img-thumbnail pull-left" src="~/Content/images/business/business-th-3.jpg" width="76" height="76" alt="" /> </div>
-                                                    <div class="col-sm-16 col-md-16 col-lg-11">
-                                                        <h4>Nielsen forecasts smaller black friday </h4>
-                                                        <div class="text-danger sub-info">
-                                                            <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                            <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="row">
-                                                    <div class="col-sm-5 hidden-sm hidden-md"><img class="img-thumbnail pull-left" src="~/Content/images/business/business-th-4.jpg" width="76" height="76" alt="" /> </div>
-                                                    <div class="col-sm-16 col-md-16 col-lg-11">
-                                                        <h4>The evolution of the apple mouse</h4>
-                                                        <div class="text-danger sub-info">
-                                                            <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                            <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="col-md-11 col-sm-16" id="nationalHomeRecord">
                         </div>
                         <div class="col-md-5 col-sm-16 hidden-sm hidden-xs  left-bordered">
                             <div id="vid-thumbs" class="owl-carousel">
@@ -434,59 +354,7 @@
                                 <div class="main-title">स्पोर्ट्स</div>
                                 <div class="span-outer"><span class="pull-right text-danger last-update"><span class="ion-android-data icon"></span>Last update: 2 days ago</span> </div>
                             </div>
-                            <div class="row">
-                                <div class="topic col-sm-16">
-                                    <a href="#">
-                                        <img class=" img-thumbnail" src="~/Content/images/science/sci-main.jpg" width="600" height="227" alt="" />
-                                        <h3> Curabitur ullamcorper ultricies nisi nam eget dui</h3>
-                                        <div class="text-danger sub-info-bordered ">
-                                            <div class="time"><span class="ion-android-data icon"></span>Dec 9 2014</div>
-                                            <div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                        </div>
-                                    </a>
-                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-                                </div>
-                                <div class="col-sm-16">
-                                    <ul class="list-unstyled  top-bordered ex-top-padding">
-                                        <li>
-                                            <a href="#">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-4 hidden-sm  "><img width="76" height="76" alt="" src="~/Content/images/science/sci-th-1.jpg" class="img-thumbnail pull-left"> </div>
-                                                    <div class="col-lg-13 col-md-12">
-                                                        <h4>
-                                                            Irish cream and chocolate
-                                                            cheesecake
-                                                        </h4>
-                                                        <div class="text-danger sub-info">
-                                                            <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                            <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="row ">
-                                                    <div class="col-lg-3 col-md-4 hidden-sm  "><img width="76" height="76" alt="" src="~/Content/images/science/sci-th-2.jpg" class="img-thumbnail pull-left"> </div>
-                                                    <div class="col-lg-13 col-md-12">
-                                                        <h4>
-                                                            Irish cream and chocolate
-                                                            cheesecake
-                                                        </h4>
-                                                        <div class="text-danger sub-info">
-                                                            <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                            <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="row" id="sportsHomeData">
                             </div>
                         </div>
                         <div class="col-sm-8 col-xs-16 wow fadeInRight animated" data-wow-delay="0.5s" data-wow-offset="130">
@@ -494,62 +362,7 @@
                                 <div class="main-title">बॉलीवुड</div>
                                 <div class="span-outer"><span class="pull-right text-danger last-update"><span class="ion-android-data icon"></span>Last update: 2 days ago</span> </div>
                             </div>
-                            <div class="row left-bordered">
-                                <div class="topic col-sm-16">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="~/Content/images/travel/travel-main.jpg" width="600" height="227" alt="" />
-                                        <h3>
-                                            Feds open formal probe into tesla
-                                            electric ship
-                                        </h3>
-                                        <div class="text-danger sub-info-bordered">
-                                            <div class="time"><span class="ion-android-data icon"></span>Dec 9 2014</div>
-                                            <div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                        </div>
-                                    </a>
-                                    <p>Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                                </div>
-                                <div class="col-sm-16">
-                                    <ul class="list-unstyled top-bordered ex-top-padding">
-                                        <li>
-                                            <a href="#">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-4 hidden-sm  "><img width="76" height="76" alt="" src="~/Content/images/travel/travel-th-1.jpg" class="img-thumbnail pull-left"> </div>
-                                                    <div class="col-lg-13 col-md-12">
-                                                        <h4>
-                                                            Irish cream and chocolate
-                                                            cheesecake
-                                                        </h4>
-                                                        <div class="text-danger sub-info">
-                                                            <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                            <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="row ">
-                                                    <div class="col-lg-3 col-md-4 hidden-sm  "><img width="76" height="76" alt="" src="~/Content/images/travel/travel-th-2.jpg" class="img-thumbnail pull-left"> </div>
-                                                    <div class="col-lg-13 col-md-12">
-                                                        <h4>
-                                                            Irish cream and chocolate
-                                                            cheesecake
-                                                        </h4>
-                                                        <div class="text-danger sub-info">
-                                                            <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                            <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="row left-bordered" id="bollywoodHomeData">
                             </div>
                         </div>
                     </div>
@@ -564,128 +377,35 @@
                     </div>
                     <div class="row">
                         <div id="owl-lifestyle" class="owl-carousel owl-theme lifestyle pull-left">
-                            <div class="item topic">
-                                <a href="#">
-                                    <img class="img-thumbnail" src="~/Content/images/lifestyle/lifestyle-slide-1.jpg" width="300" height="132" alt="" />
-                                    <h4>Etiam rhoncus. Maecenas tempus, tellus eget condimentum</h4>
-                                    <div class="text-danger sub-info-bordered remove-borders">
-                                        <div class="time"><span class="ion-android-data icon"></span>Dec 9 2014</div>
-                                        <div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
+                            @if (Model != null && Model.Count > 0)
+                            {
+                                for (i = 15; i < Model.Count; i++)
+                                {
+                                    <div class="item topic">
+                                        <a href="~/RSSMaster/RSSChildData?RSSFeedID=@Model[i].RSSFeedID&RSSID=@Model[i].RSSID">
+                                            @if (Model[i].Image != null)
+                                            {
+                                                <img class="img-thumbnail" src="@Model[i].Image" width="300" height="132" alt="" />
+                                            }
+                                            else
+                                            {
+                                                <img class="img-thumbnail" src="~/Content/images/Error/No_Image_Available_2.png" width="300" height="132" alt="" />
+                                            }
+
+                                            <h4>@Model[i].Title</h4>
+                                            <div class="text-danger sub-info-bordered remove-borders">
+                                                <div class="time"><span class="ion-android-data icon"></span>@Model[i].PublishDate.ToString("dd/MM/yyyy")</div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="item topic">
-                                <a href="#">
-                                    <img class="img-thumbnail" src="~/Content/images/lifestyle/lifestyle-slide-2.jpg" width="300" height="132" alt="" />
-                                    <h4>Etiam rhoncus. Maecenas tempus, tellus eget condimentum</h4>
-                                    <div class="text-danger sub-info-bordered remove-borders">
-                                        <div class="time"><span class="ion-android-data icon"></span>Dec 9 2014</div>
-                                        <div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item topic">
-                                <a href="#">
-                                    <img class="img-thumbnail" src="~/Content/images/lifestyle/lifestyle-slide-3.jpg" width="300" height="132" alt="" />
-                                    <h4>Etiam rhoncus. Maecenas tempus, tellus eget condimentum</h4>
-                                    <div class="text-danger sub-info-bordered remove-borders">
-                                        <div class="time"><span class="ion-android-data icon"></span>Dec 9 2014</div>
-                                        <div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item topic">
-                                <a href="#">
-                                    <img class="img-thumbnail" src="~/Content/images/lifestyle/lifestyle-slide-1.jpg" width="300" height="132" alt="" />
-                                    <h4>Etiam rhoncus. Maecenas tempus, tellus eget condimentum</h4>
-                                    <div class="text-danger sub-info-bordered remove-borders">
-                                        <div class="time"><span class="ion-android-data icon"></span>Dec 9 2014</div>
-                                        <div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item topic">
-                                <a href="#">
-                                    <img class="img-thumbnail" src="~/Content/images/lifestyle/lifestyle-slide-2.jpg" width="300" height="132" alt="" />
-                                    <h4>Etiam rhoncus. Maecenas tempus, tellus eget condimentum</h4>
-                                    <div class="text-danger sub-info-bordered remove-borders">
-                                        <div class="time"><span class="ion-android-data icon"></span>Dec 9 2014</div>
-                                        <div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item topic">
-                                <a href="#">
-                                    <img class="img-thumbnail" src="~/Content/images/lifestyle/lifestyle-slide-3.jpg" width="300" height="132" alt="" />
-                                    <h4>Etiam rhoncus. Maecenas tempus, tellus eget condimentum</h4>
-                                    <div class="text-danger sub-info-bordered remove-borders">
-                                        <div class="time"><span class="ion-android-data icon"></span>Dec 9 2014</div>
-                                        <div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                    </div>
-                                </a>
-                            </div>
+                                }
+                            }
                         </div>
                     </div>
-                    <hr>
                 </div>
                 <!-- lifestyle end -->
                 <!--Recent videos start-->
-                <div class="col-sm-16 recent-vid wow fadeInDown animated " data-wow-delay="0.5s" data-wow-offset="50">
-                    <div class="main-title-outer pull-left">
-                        <div class="main-title">recent videos</div>
-                        <div class="span-outer"><span class="pull-right text-danger last-update"><span class="ion-android-data icon"></span>Last update: 1 day ago</span> </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-11 col-xs-16">
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div id="vid-first" class="tab-pane embed-responsive embed-responsive-16by9 active">
-                                    <iframe width="514" height="289" src="//www.youtube.com/embed/OFDAGiPJHL8?showinfo=0" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                                <div id="vid-second" class="tab-pane embed-responsive embed-responsive-16by9">
-                                    <iframe width="514" height="289" frameborder="0" allowfullscreen="" src="//www.youtube.com/embed/TEnNaUg6Vm4?rel=0&amp;showinfo=0"></iframe>
-                                </div>
-                                <div id="vid-third" class="tab-pane embed-responsive embed-responsive-16by9">
-                                    <iframe width="514" height="289" src="//www.youtube.com/embed/rDZ1AjDJjFI?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 col-xs-2">
-                            <!-- required for floating -->
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs tabs-right hidden-xs">
-                                <li class="active">
-                                    <a data-toggle="tab" href="#vid-first">
-                                        <div class="vid-thumb">
-                                            <div class="vid-box"><span class="ion-eye"></span><img class="img-thumbnail" src="~/Content/images/recent-videos/re-vid-1.jpg" width="234" height="87" alt="" /> </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a data-toggle="tab" href="#vid-second">
-                                        <div class="vid-thumb">
-                                            <div class="vid-box"><span class="ion-eye"></span><img class="img-thumbnail" src="~/Content/images/recent-videos/re-vid-2.jpg" width="234" height="87" alt="" /> </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a data-toggle="tab" href="#vid-third">
-                                        <div class="vid-thumb">
-                                            <div class="vid-box"><span class="ion-eye"></span><img class="img-thumbnail" src="~/Content/images/recent-videos/re-vid-3.jpg" width="234" height="87" alt="" /> </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
+              
                 <!--Recent videos end-->
                 <!--wide ad start-->
                 <div class="col-sm-16 wow fadeInDown animated " data-wow-delay="0.5s" data-wow-offset="25"><img class="img-responsive" src="~/Content/images/ads/728-90-ad.gif" width="728" height="90" alt="" /></div>
@@ -694,363 +414,276 @@
             </div>
         </div>
         <!-- left sec end -->
-        <!-- right sec start -->
-        <div class="col-sm-5 hidden-xs right-sec">
+        <!-- right sec start  hidden-xs -->
+        <div class="col-sm-5 right-sec">
             <div class="bordered top-margin">
                 <div class="row ">
                     <div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="50"> <img class="img-responsive" src="~/Content/images/ads/336-280-ad.gif" width="336" height="280" alt="" /> <a href="#" class="sponsored">sponsored advert</a> </div>
                     <div class="col-sm-16 bt-spac wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="150">
-                        <div class="table-responsive">
-                            <table class="table table-bordered social">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <a class="rss" href="#">
-                                                <p>
-                                                    <span class="ion-social-rss"></span> subscribe<br>
-                                                    to rss
-                                                </p>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="twitter" href="#">
-                                                <p>
-                                                    <span class="ion-social-twitter"></span> 811,6
-                                                    followers
-                                                </p>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="facebook" href="#">
-                                                <p>
-                                                    <span class="ion-social-facebook"></span> 6958,56<br>
-                                                    fans
-                                                </p>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a class="youtube" href="#">
-                                                <p>
-                                                    <span class="ion-social-youtube"></span> 6954,55
-                                                    subscribers
-                                                </p>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="vimeo" href="#">
-                                                <p>
-                                                    <span class="ion-social-vimeo"></span> 896,7
-                                                    subscribers
-                                                </p>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="dribbble" href="#">
-                                                <p>
-                                                    <span class="ion-social-dribbble-outline"></span> 6321,56
-                                                    followers
-                                                </p>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a class="googleplus" href="#">
-                                                <p>
-                                                    <span class="ion-social-googleplus"></span> 9625.56
-                                                    followers
-                                                </p>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="pinterest" href="#">
-                                                <p>
-                                                    <span class="ion-social-pinterest"></span> 741,9
-                                                    followers
-                                                </p>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="instagram" href="#">
-                                                <p>
-                                                    <span class="ion-social-instagram"></span> 3548,7
-                                                    followers
-                                                </p>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        @*<div class="table-responsive">
+                <table class="table table-bordered social">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a class="rss" href="#">
+                                    <p>
+                                        <span class="ion-social-rss"></span> subscribe<br>
+                                        to rss
+                                    </p>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="twitter" href="#">
+                                    <p>
+                                        <span class="ion-social-twitter"></span> 811,6
+                                        followers
+                                    </p>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="facebook" href="#">
+                                    <p>
+                                        <span class="ion-social-facebook"></span> 6958,56<br>
+                                        fans
+                                    </p>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="youtube" href="#">
+                                    <p>
+                                        <span class="ion-social-youtube"></span> 6954,55
+                                        subscribers
+                                    </p>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="vimeo" href="#">
+                                    <p>
+                                        <span class="ion-social-vimeo"></span> 896,7
+                                        subscribers
+                                    </p>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="dribbble" href="#">
+                                    <p>
+                                        <span class="ion-social-dribbble-outline"></span> 6321,56
+                                        followers
+                                    </p>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="googleplus" href="#">
+                                    <p>
+                                        <span class="ion-social-googleplus"></span> 9625.56
+                                        followers
+                                    </p>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="pinterest" href="#">
+                                    <p>
+                                        <span class="ion-social-pinterest"></span> 741,9
+                                        followers
+                                    </p>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="instagram" href="#">
+                                    <p>
+                                        <span class="ion-social-instagram"></span> 3548,7
+                                        followers
+                                    </p>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>*@
                     </div>
                     <!-- activities start -->
                     <div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="130">
                         <!-- Nav tabs -->
+
                         <ul class="nav nav-tabs nav-justified " role="tablist">
-                            <li class="active"><a href="#popular" role="tab" data-toggle="tab">बड़वानी</a></li>
-                            <li><a href="#recent" role="tab" data-toggle="tab">इंदौर</a></li>
-                            <li><a href="#comments" role="tab" data-toggle="tab">भोपाल</a></li>
+                            <li class="active"><a href="#1008" role="tab" data-toggle="tab">बड़वानी</a></li>
+                            <li><a href="#1010" role="tab" data-toggle="tab">इंदौर</a></li>
+                            <li><a href="#1011" role="tab" data-toggle="tab">भोपाल</a></li>
                         </ul>
 
-                        <!-- Tab panes -->
+                        <!-- Tab panes   col-lg-13 col-md-12-->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="popular">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5 col-md-4"><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-1.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11 col-md-12">
-                                                    <h4>Tellus. Phasellus viverra nulla ut metus</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
+
+                            <div class="tab-pane active" id="1008">
+                                @for (i = 0; i < Model.Count; i++)
+                                {
+
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="~/RSSMaster/RSSChildData?RSSFeedID=@Model[i].RSSFeedID&RSSID=@Model[i].RSSID">
+                                                <div class="row">
+                                                    @if (Model[i].Image != null)
+                                                    {
+                                                        <div class="col-lg-3 col-md-4 hidden-sm"><img class="img-thumbnail pull-left" src="@Model[i].Image" width="78" height="78" alt="" /> </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col-lg-3 col-md-4 hidden-sm"><img class="img-thumbnail pull-left" src="~/Content/images/Error/No_Image_Available_2.png" width="78" height="78" alt="" /> </div>
+                                                    }
+                                                    <div class="col-sm-11 col-md-12">
+                                                        <h4>@Model[i].Title</h4>
+                                                        <div class="text-danger sub-info">
+                                                            <div class="time"><span class="ion-android-data icon"></span>@Model[i].PublishDate.ToString("dd/MM/yyyy")</div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-2.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11 col-md-12">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-3.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11 col-md-12">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-4.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11 col-md-12">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-5.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11 col-md-12">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    if (i == j)
+                                    {
+                                        break;
+                                    }
+                                }
                             </div>
-                            <div class="tab-pane" id="recent">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-5.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11  col-md-12 ">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
+                            <div class="tab-pane" id="1011">
+                                @for (i = 5; i < Model.Count; i++)
+                                {
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="~/RSSMaster/RSSChildData?RSSFeedID=@Model[i].RSSFeedID&RSSID=@Model[i].RSSID">
+                                                <div class="row">
+                                                    @if (Model[i].Image != null)
+                                                    {
+                                                        <div class="col-sm-5 col-md-4"><img class="img-thumbnail pull-left" src="@Model[i].Image" width="164" height="152" alt="" /> </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col-sm-5 col-md-4"><img class="img-thumbnail pull-left" src="~/Content/images/Error/No_Image_Available_2.png" width="164" height="152" alt="" /> </div>
+                                                    }
+                                                    <div class="col-sm-11 col-md-12">
+                                                        <h4>@Model[i].Title</h4>
+                                                        <div class="text-danger sub-info">
+                                                            <div class="time"><span class="ion-android-data icon"></span>@Model[i].PublishDate.ToString("dd/MM/yyyy")</div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-4.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11  col-md-12 ">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-3.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11  col-md-12 ">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-2.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11  col-md-12 ">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/popular/pop-1.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11  col-md-12 ">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <div class="text-danger sub-info">
-                                                        <div class="time"><span class="ion-android-data icon"></span>Dec 16 2014</div>
-                                                        <div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    if (i == k)
+                                    {
+                                        break;
+                                    }
+                                }
                             </div>
-                            <div class="tab-pane" id="comments">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/comments/com-1.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11  col-md-12 ">
-                                                    <h4>Tellus Phasellus viverra nulla</h4>
-                                                    <p>Cum sociis natoque penatibus et magnis dis parturient montes..</p>
+                            <div class="tab-pane" id="1010">
+                                @for (i = 10; i < Model.Count; i++)
+                                {
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="~/RSSMaster/RSSChildData?RSSFeedID=@Model[i].RSSFeedID&RSSID=@Model[i].RSSID">
+                                                <div class="row">
+                                                    @if (Model[i].Image != null)
+                                                    {
+                                                        <div class="col-sm-5 col-md-4"><img class="img-thumbnail pull-left" src="@Model[i].Image" width="164" height="152" alt="" /> </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col-sm-5 col-md-4"><img class="img-thumbnail pull-left" src="~/Content/images/Error/No_Image_Available_2.png" width="164" height="152" alt="" /> </div>
+                                                    }
+                                                    <div class="col-sm-11 col-md-12">
+                                                        <h4>@Model[i].Title</h4>
+                                                        <div class="text-danger sub-info">
+                                                            <div class="time"><span class="ion-android-data icon"></span>@Model[i].PublishDate.ToString("dd/MM/yyyy")</div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/comments/com-2.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11  col-md-12 ">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo..</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/comments/com-3.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11  col-md-12 ">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <p>Donec pede justo, fringilla vel, aliquet nec vulputate..</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/comments/com-4.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-12">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="row">
-                                                <div class="col-sm-5  col-md-4 "><img class="img-thumbnail pull-left" src="~/Content/images/comments/com-5.jpg" width="164" height="152" alt="" /> </div>
-                                                <div class="col-sm-11  col-md-12 ">
-                                                    <h4>The evolution of the apple ..</h4>
-                                                    <p>Beatae vitae dicta sunt.explicabo ipsam..</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    if (i == s)
+                                    {
+                                        break;
+                                    }
+                                }
                             </div>
                         </div>
                     </div>
                     <!-- activities end -->
-                    <!-- radio start -->
-                    <div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="100">
-                        <div class="main-title-outer pull-left">
-                            <div class="main-title">globalnews radio</div>
-                        </div>
-                        <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/172078992&amp;color=e74c3c&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
-                    </div>
-                    <!-- radio end -->
                     <!-- calendar start -->
                     <div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="50">
                         <div class="single pull-left"></div>
                     </div>
                     <!-- calendar end -->
-                    <!-- flicker imgs start -->
-                    <div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="35">
-                        <div class="main-title-outer pull-left">
-                            <div class="main-title">flicker images</div>
-                        </div>
-                        <ul class="list-inline">
-                            <li><a href="https://flic.kr/p/pGKEzR" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3944/15557385115_2d191a5cc7_s.jpg" width="55" height="55" alt="" /></a></li>
-                            <li><a href="https://flic.kr/p/pq5PiE" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3956/15368741148_ef02d92a65_s.jpg" width="55" height="55" alt="" /></a></li>
-                            <li><a href="https://flic.kr/p/pq9rDD" target="_blank"><img class="img-responsive" src="https://farm6.staticflickr.com/5608/15369448747_fd3f69cbb7_s.jpg" width="55" height="55" alt="" /></a></li>
-                            <li><a href="https://flic.kr/p/pGM4yz" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3946/15557657525_da199f6917_s.jpg" width="55" height="55" alt="" /></a></li>
-                            <li><a href="https://flic.kr/p/pH6FJ4" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3953/15561291195_e7ecf7d3a1_s.jpg" width="55" height="55" alt="" /></a></li>
-                            <li><a href="https://flic.kr/p/pqoKFn" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3953/15372240967_9ee086188c_s.jpg" width="55" height="55" alt="" /></a></li>
-                            <li><a href="https://flic.kr/p/pGHh6g" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3944/15556919225_c7d99f9667_s.jpg" width="55" height="55" alt="" /></a></li>
-                            <li><a href="https://flic.kr/p/pqxJZC" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3939/15373994670_8c756abcb0_s.jpg" width="55" height="55" alt="" /></a></li>
-                            <li><a href="https://flic.kr/p/pEPtj9" target="_blank"><img class="img-responsive" src="https://farm4.staticflickr.com/3938/15535494656_d04ef318a0_s.jpg" width="55" height="55" alt="" /></a></li>
-                            <li><a href="https://flic.kr/p/pqjpxX" target="_blank"><img class="img-responsive" src="https://farm6.staticflickr.com/5605/15371392809_5069f8772d_s.jpg" width="55" height="55" alt="" /></a></li>
-                        </ul>
-                    </div>
-                    <!-- flicker imgs end -->
+                    <div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="50"> <img class="img-responsive" src="~/Content/images/ads/336-280-ad.gif" width="336" height="280" alt="" /> <a href="#" class="sponsored">sponsored advert</a> </div>
+                    <div class="col-sm-16 bt-space wow fadeInUp animated" data-wow-delay="1s" data-wow-offset="50"> <img class="img-responsive" src="~/Content/images/ads/336-280-ad.gif" width="336" height="280" alt="" /> <a href="#" class="sponsored">sponsored advert</a> </div>
                 </div>
             </div>
         </div>
         <!-- right sec end -->
     </div>
 </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script>
+    $(document).ready(function () {
+        NationalHomeRecord();
+        SportsHomeData();
+        BollywoodHomeData();
+        BreakingNewsData();
+    });
+    function NationalHomeRecord() {
+        $.ajax({
+            type: 'GET',
+            contentType: "application/json",
+            dataType: "html",
+            url: "/GetHome/NationalDataRetrive/",
+            data: { "Id": 1000 },
+            success: function (data) {
+                $("#nationalHomeRecord").html(data);
+            }
+        });
+    }
+    function SportsHomeData() {
+        $.ajax({
+            type: 'GET',
+            contentType: "application/json",
+            dataType: "html",
+            url: "/GetHome/SportsDataRetrive/",
+            data: { "Id": 1004 },
+            success: function (data) {
+                $("#sportsHomeData").html(data);
+            }
+        });
+    }
+    function BollywoodHomeData() {
+        $.ajax({
+            type: 'GET',
+            contentType: "application/json",
+            dataType: "html",
+            url: "/GetHome/BollywoodDataRetrive/",
+            data: { "Id": 1002 },
+            success: function (data) {
+                $("#bollywoodHomeData").html(data);
+            }
+        });
+    }
+    function BreakingNewsData() {
+        $.ajax({
+            type: 'GET',
+            contentType: "application/json",
+            dataType: "html",
+            url: "/GetHome/BreakingNewsDataRetrive/",
+            data: { "Id": 1018 },
+            success: function (data) {
+                $("#breakingNewsHomeData").html(data);
+            }
+        });
+    }
+</script>

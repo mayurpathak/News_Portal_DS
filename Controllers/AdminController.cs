@@ -20,6 +20,7 @@ namespace News_Portal.Controllers
         {
             try
             {
+                var rssFeedList = new List<RSSFeed>();
                 string username = fc.Get("Username");
                 string password = fc.Get("Password");
                 using (SystemDB db = new SystemDB())
@@ -27,6 +28,26 @@ namespace News_Portal.Controllers
                     var login = db.Login.Where(x => x.Username == username && x.Password == password && x.IsDeleted != true).FirstOrDefault();
                     if (login != null)
                     {
+                        var rssFeedBadwani = db.RSSFeed.Where(x => x.RSSFeedID == 1008).OrderByDescending(x => x.PublishDate).Take(5).ToList();
+                        foreach (var item in rssFeedBadwani)
+                        {
+                            rssFeedList.Add(item);
+                        }
+                        var rssFeedBhopal = db.RSSFeed.Where(x => x.RSSFeedID == 1010).OrderByDescending(x => x.PublishDate).Take(5).ToList();
+                        foreach (var item in rssFeedBhopal)
+                        {
+                            rssFeedList.Add(item);
+                        }
+                        var rssFeedIndore = db.RSSFeed.Where(x => x.RSSFeedID == 1011).OrderByDescending(x => x.PublishDate).Take(5).ToList();
+                        foreach (var item in rssFeedIndore)
+                        {
+                            rssFeedList.Add(item);
+                        }
+                        var rssFeedIntetnational = db.RSSFeed.Where(x => x.RSSFeedID == 1001).OrderByDescending(x => x.PublishDate).Take(6).ToList();
+                        foreach (var item in rssFeedIntetnational)
+                        {
+                            rssFeedList.Add(item);
+                        }
                         if (login.Role == "SuperAdmin")
                         {
                             Session["SuperAdmin"] = true;
@@ -35,11 +56,11 @@ namespace News_Portal.Controllers
                         {
                             Session["Admin"] = true;
                         }
-                        return View("~/Views/Home/Home.cshtml");
+                        return View("~/Views/Home/Home.cshtml",rssFeedList);
                     }
                     else
                     {
-                        return View("~/Views/Home/Home.cshtml");
+                        return View("~/Views/Home/Home.cshtml",rssFeedList);
                     }
                 }
             }

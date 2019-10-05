@@ -126,8 +126,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BLL\CommonCode.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ErrorHandlingController.cs" />
+    <Compile Include="Controllers\GetHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RSSMasterController.cs" />
     <Compile Include="Global.asax.cs">
@@ -271,6 +273,7 @@
     <Content Include="Content\images\comments\com-5.jpg" />
     <Content Include="Content\images\Error\Access Denied.jpg" />
     <Content Include="Content\images\Error\Access_Denied.jpg" />
+    <Content Include="Content\images\Error\No_Image_Available_2.png" />
     <Content Include="Content\images\Error\something.jpg" />
     <Content Include="Content\images\Error\Something_went.jpg" />
     <Content Include="Content\images\favicon.ico" />
@@ -384,6 +387,10 @@
     <Content Include="Views\Admin\AddNews.cshtml" />
     <Content Include="Views\Admin\ePaper.cshtml" />
     <Content Include="Views\Error\Unauthorized.cshtml" />
+    <Content Include="Views\GetHome\NationalData.cshtml" />
+    <Content Include="Views\GetHome\SportsData.cshtml" />
+    <Content Include="Views\GetHome\BollywoodData.cshtml" />
+    <Content Include="Views\GetHome\BreakingNewsData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

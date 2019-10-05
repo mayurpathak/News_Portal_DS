@@ -1,4 +1,5 @@
-﻿using News_Portal.Models;
+﻿using News_Portal.BLL;
+using News_Portal.Models;
 using News_Portal.Models.EntityData;
 using News_Portal.Models.RSSFeed;
 using System;
@@ -14,6 +15,7 @@ namespace News_Portal.Controllers
     {
         public ActionResult Home()
         {
+            var rssFeedList = new List<RSSFeed>();
             using (SystemDB db = new SystemDB())
             {
                 string ipAddress = GetIp();
@@ -34,8 +36,11 @@ namespace News_Portal.Controllers
                         Session["TotalUserCount"] = totalUserCount;
                     }
                 }
+                int[] rssids = new int[] { 1008, 1010, 1011 };
+                CommonCode commonCode = new CommonCode();
+                rssFeedList = commonCode.HomeData();
             }
-            return View();
+            return View(rssFeedList);
         }
         //[HttpPost]
         //[Authorize]
@@ -43,13 +48,10 @@ namespace News_Portal.Controllers
         {
             try
             {
-
                 using (SystemDB db = new SystemDB())
                 {
-
                     if (Convert.ToBoolean(Session["SuperAdmin"]))
                     {
-
                         var rssMasterList = db.RSSFeedMaster.ToList();
                         foreach (var items in rssMasterList)
                         {
@@ -122,7 +124,9 @@ namespace News_Portal.Controllers
                             }
                         }
 
-                        return View("~/Views/Home/Home.cshtml");
+                        CommonCode commonCode = new CommonCode();
+                        var rssFeedList = commonCode.HomeData();
+                        return View("~/Views/Home/Home.cshtml", rssFeedList);
                     }
                     else
                     {
