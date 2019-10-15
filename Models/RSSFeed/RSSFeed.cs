@@ -21,5 +21,7 @@ namespace News_Portal.Models.RSSFeed
         public bool IsDeleted { get; set; }
         [NotMapped]
         public List<RSSFeedDDL> RSSFeedDDL { get; set; }
+        [NotMapped]
+        public List<RSSFeed> SliderData { get; set; }
     }
 }

@@ -44,6 +44,7 @@ namespace News_Portal.Controllers
         }
         //[HttpPost]
         //[Authorize]
+        [OutputCache(Duration = 600)]
         public ActionResult GetNews(int Id = 0)
         {
             try
@@ -59,7 +60,7 @@ namespace News_Portal.Controllers
                             {
                                 string RSSURL = items.RSSURL;
                                 XDocument xDoc = new XDocument();
-                                xDoc = XDocument.Load(RSSURL);
+                                xDoc =  XDocument.Load(RSSURL);
                                 //xDoc = XDocument.Load("test.xml");
                                 var descriptions = xDoc.Descendants("description").ToList();
                                 string descriptionCount = Convert.ToString(descriptions[1].FirstNode);
@@ -73,16 +74,7 @@ namespace News_Portal.Controllers
                                     //var url = "https://i10.dainikbhaskar.com/thumbnails/116x87/web2images/www.bhaskar.com/2019/08/29/0521_ms-dhoni_1.jpg";
                                     string[] imageNames = imgpath.Split('/').ToArray();
                                     string imageName = imageNames.Last();
-
-                                    //using (WebClient client = new WebClient())
-                                    //{
-                                    //    string path = @"E:\RSSFeedWebApplication\RSSFeedMVC\Content\Images\" + imageName + "";
-                                    //    client.DownloadFile(new Uri(imgpath), path);
-
-                                    //    string imgBase64String = GetBase64StringForImage(path);
-                                    //}
                                 }
-
 
                                 var RSSFeedData = (from x in xDoc.Descendants("item")
                                                    select new Feeds
@@ -92,7 +84,14 @@ namespace News_Portal.Controllers
                                                        Description = ((string)x.Element("description")),
                                                        PublishDate = ((string)x.Element("pubDate"))
                                                    }).ToList();
-
+                                string publishedDate = RSSFeedData[0].PublishDate.Replace("\n\t   ", "").Replace(" GMT\t", "");
+                                DateTime publishDated = Convert.ToDateTime(publishedDate);
+                                var title = RSSFeedData[0].Title;
+                                var dataChecked = db.RSSFeed.Where(x => x.PublishDate == publishDated && x.Title == title).FirstOrDefault();
+                                if (dataChecked != null)
+                                {
+                                    continue;
+                                }
                                 foreach (var item in RSSFeedData)
                                 {
                                     string pubDate = item.PublishDate.Replace("\n\t   ", "").Replace(" GMT\t", "");
@@ -127,6 +126,7 @@ namespace News_Portal.Controllers
                         CommonCode commonCode = new CommonCode();
                         var rssFeedList = commonCode.HomeData();
                         return View("~/Views/Home/Home.cshtml", rssFeedList);
+                        //return RedirectToAction("Home", rssMasterList);
                     }
                     else
                     {

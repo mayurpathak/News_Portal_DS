@@ -26,5 +26,11 @@ namespace News_Portal
             Application["Totaluser"] = (int)Application["Totaluser"] + 1;
             Application.UnLock();
         }
+        void Application_BeginRequest(Object source, EventArgs e)
+        {
+            var app = (HttpApplication)source;
+            var uriObject = app.Context.Request.Url;
+            //app.Context.Request.Url.OriginalString
+        }
     }
 }

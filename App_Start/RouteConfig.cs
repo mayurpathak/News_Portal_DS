@@ -18,6 +18,11 @@ namespace News_Portal
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Home", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+            name: "GetNews",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Home", action = "GetNews", id = UrlParameter.Optional }
+        );
         }
     }
 }
