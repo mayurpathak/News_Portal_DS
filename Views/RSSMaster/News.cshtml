@@ -15,28 +15,36 @@
         foreach (var item in Model)
         {
             <!-- left sec start -->
-            <div class="row col-md-6 col-sm-9">
-                <div class="row">
-                    <div class="sec-topic col-sm-16 wow fadeInDown animated  animated" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                        <div class="row">
-                            <div class="col-sm-4"><img width="100" height="100" alt="" src="@item.Image" class="img-thumbnail"></div>
-                            <div class="col-sm-12">
-                                <a href="~/RSSMaster/RSSChildData?RSSFeedID=@item.RSSFeedID&RSSID=@item.RSSID">
-                                    <div class="sec-info">
-                                        <h3>@item.Title</h3>
-                                        @*<div class="text-danger sub-info-bordered">
-                                                <div class="time"><span class="ion-android-data icon"></span>@item.PublishDate</div>
-                                            </div>*@
-                                    </div>
-                                </a>
+<div class="row col-md-6 col-sm-9">
+    <div class="row">
+        <div class="sec-topic col-sm-16 wow fadeInDown animated  animated" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
+            <div class="row">
+                @if (item.Image != null)
+                {
+                <div class="col-sm-4"><img width="100" height="100" alt="" src="@item.Image" class="img-thumbnail"></div>
+                }
+                else
+                {
+                    <img class="col-sm-4" src="~/Content/images/Error/No_Image_Available_2.png" width="300" height="132" alt="" />
+                }
+                
+                <div class="col-sm-12">
+                    <a href="~/RSSMaster/RSSChildData?RSSFeedID=@item.RSSFeedID&RSSID=@item.RSSID">
+                        <div class="sec-info">
+                            <h3>@item.Title</h3>
+                            <div class="text-danger sub-info-bordered remove-borders">
+                                <div class="time"><span class="ion-android-data icon"></span>@item.PublishDate.ToString("dd/MM/yyyy")</div>
                             </div>
                         </div>
-                    </div>
-
+                    </a>
                 </div>
-                <!-- left sec end -->
-
             </div>
+        </div>
+
+    </div>
+    <!-- left sec end -->
+
+</div>
             @*<div class="form-group col-md-6">
                     <img src="@item.Image" width="100" height="100" class="col-md-4" />
                     <a class="col-md-8" href="~/RSSMaster/RSSChildData?RSSFeedID=@item.RSSFeedID&RSSID=@item.RSSID"><h3 style="color:#3E7CFF;width: 150%;">@item.Title</h3></a>

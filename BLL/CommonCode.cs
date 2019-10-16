@@ -17,6 +17,10 @@ namespace News_Portal.BLL
                 var rssFeedBadwani = db.RSSFeed.Where(x => x.RSSFeedID == 1008).OrderByDescending(x => x.PublishDate).Take(5).ToList();
                 foreach (var item in rssFeedBadwani)
                 {
+                    if (rssFeedBadwani[0].SliderData == null)
+                    {
+                        item.SliderData = SliderData();
+                    }
                     rssFeedList.Add(item);
                 }
                 var rssFeedBhopal = db.RSSFeed.Where(x => x.RSSFeedID == 1010).OrderByDescending(x => x.PublishDate).Take(5).ToList();
@@ -41,6 +45,29 @@ namespace News_Portal.BLL
                 }
             }
             return rssFeedList;
+        }
+        public List<RSSFeed> SliderData()
+        {
+            try
+            {
+                var rssFeedList = new List<RSSFeed>();
+                using (SystemDB db = new SystemDB())
+                {
+                    var rssFeedListSlider = db.RSSFeed.Where(x => x.RSSFeedID == 1001).OrderByDescending(x => x.PublishDate).Take(10).ToList();
+                    foreach (var item in rssFeedListSlider)
+                    {
+                        item.SliderData = new List<RSSFeed>();
+                        item.SliderData.Add(item);
+                        rssFeedList.Add(item);
+                    }
+                   // rssFeedList[0].SliderData.AddRange(item);
+                    return rssFeedList;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

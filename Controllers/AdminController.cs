@@ -112,8 +112,10 @@ namespace News_Portal.Controllers
                 if (Convert.ToBoolean(Session["SuperAdmin"]))
                 {
                     string filename = System.IO.Path.GetFileName(file.FileName);
-                    string path = System.IO.Path.Combine(
-                                           Server.MapPath("~/Content/AddNews"), filename);
+                    //string path = System.IO.Path.Combine(
+                    //                       Server.MapPath("~/Content/AddNews"), filename);
+                    string filePaths = System.IO.Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory + "\\Content\\AddNews\\");
+                    string path = filePaths +"\\" + filename + "";
                     // file is uploaded
                     file.SaveAs(path);
                     RSSMasterController RSSOBJ = new RSSMasterController();
@@ -171,8 +173,7 @@ namespace News_Portal.Controllers
                 if (Convert.ToBoolean(Session["SuperAdmin"]))
                 {
                     string filename = System.IO.Path.GetFileName(file.FileName);
-                    string path = System.IO.Path.Combine(
-                                           Server.MapPath("~/Content/ePaper"), filename);
+                    string path = System.IO.Path.Combine(Server.MapPath("~/Content/ePaper"), filename);
                     file.SaveAs(path);
                     using (SystemDB db = new SystemDB())
                     {

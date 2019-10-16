@@ -9,15 +9,23 @@
             <div class="topic">
                 @foreach (var item in Model)
                 {
-                    <a href="~/RSSMaster/RSSChildData?RSSFeedID=@item.RSSFeedID&RSSID=@item.RSSID">
-                        <img class="img-thumbnail" src="@item.Image" width="600" height="398" alt="" />
-                        <h3>@item.Title</h3>
-                        <div class="text-danger sub-info-bordered">
-                            <div class="time"><span class="ion-android-data icon"></span>@item.PublishDate.ToString("dd/MM/yyyy")</div>
-                            @*<div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
-                            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>*@
-                        </div>
-                    </a>
+                <a href="~/RSSMaster/RSSChildData?RSSFeedID=@item.RSSFeedID&RSSID=@item.RSSID">
+                    @if (item.Image != null)
+                    {
+                    <img class="img-thumbnail" src="@item.Image" width="600" height="398" alt="" />
+                    }
+                    else
+                    {
+                        <img class="img-thumbnail" src="~/Content/images/Error/No_Image_Available_2.png" width="600" height="398" alt="" />
+                    }
+                    
+                    <h3>@item.Title</h3>
+                    <div class="text-danger sub-info-bordered">
+                        <div class="time"><span class="ion-android-data icon"></span>@item.PublishDate.ToString("dd/MM/yyyy")</div>
+                        @*<div class="comments"><span class="ion-chatbubbles icon"></span>204</div>
+            <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>*@
+                    </div>
+                </a>
                     i++;
                     break;
                 }
@@ -30,7 +38,15 @@
                     <li>
                         <a href="~/RSSMaster/RSSChildData?RSSFeedID=@Model[i].RSSFeedID&RSSID=@Model[i].RSSID">
                             <div class="row">
+                                @if (Model[i].Image != null)
+                                {
                                 <div class="col-sm-5 hidden-sm hidden-md"><img class="img-thumbnail pull-left" src="@Model[i].Image" width="76" height="76" alt="" /> </div>
+                                }
+                                else
+                                {
+                                    <img class="col-sm-5 hidden-sm hidden-md" src="~/Content/images/Error/No_Image_Available_2.png" width="76" height="76" alt="" />
+                                }
+                                
                                 <div class="col-sm-16 col-md-16 col-lg-11">
                                     <h4>
                                         @Model[i].Title
@@ -38,7 +54,7 @@
                                     <div class="text-danger sub-info">
                                         <div class="time"><span class="ion-android-data icon"></span>@Model[i].PublishDate.ToString("dd/MM/yyyy")</div>
                                         @*<div class="comments"><span class="ion-chatbubbles icon"></span>351</div>
-                                        <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>*@
+                <div class="stars"><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star"></span><span class="ion-ios7-star-half"></span></div>*@
                                     </div>
                                 </div>
                             </div>

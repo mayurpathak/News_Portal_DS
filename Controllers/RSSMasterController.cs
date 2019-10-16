@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace News_Portal.Controllers
@@ -100,9 +99,16 @@ namespace News_Portal.Controllers
                             string imgBase64String = string.Empty;
                             using (WebClient client = new WebClient())
                             {
-                                string path = @"E:\RSSFeedWebApplication\RSSFeedMVC\Content\Images\" + imageName + "";
+                                //string path = @"E:\RSSFeedWebApplication\RSSFeedMVC\Content\Images\" + imageName + "";
+                                //string filePaths = System.IO.Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory+ "\\Content\\Images\\");
+                                //string path = filePaths +"\\" + imageName + "";
+                                string path = System.IO.Path.Combine(Server.MapPath("~/Content/images"), imageName);
                                 client.DownloadFile(new Uri(imgpath), path);
                                 imgBase64String = GetBase64StringForImage(path);
+                                if (System.IO.File.Exists(path))
+                                {
+                                    System.IO.File.Delete(path);
+                                }
                             }
 
                             var rssFeedChild = db.RSSFeed.Where(x => x.RSSID == item.RSSID).FirstOrDefault();
